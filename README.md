@@ -23,6 +23,6 @@ I wrote this implementation of a bounded integer queue in C. I *really* learned 
 code so I did what I could to make everything top quality. All of my test code runs clean under valgrind, as well!
 
 All the code is well documented, and you can run two test files.
-    - ./alltests - Unit Tests from CuTest framework
-    - ./bulktest *[number operations]* - Naive series of enqueue/dequeue operations, used for affirming basic functionality
+    ./alltests - Unit Tests from CuTest framework
+    ./bulktest *[number operations]* - Naive series of enqueue/dequeue operations, used for affirming basic functionality
 
