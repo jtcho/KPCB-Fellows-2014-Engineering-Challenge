@@ -12,6 +12,27 @@
  * framework.
  */
 
+//Test the simplest life cycle of the jtqueue.
+void TestJTQCreateDispose(CuTest *tc) {
+    JTQueue *queue = jtq_create(1);
+    CuAssertTrue(tc, queue != NULL);
+    jtq_dispose(queue);
+}
+
+//Test the size funtion for the default case.
+void TestJTQSizeZero(CuTest *tc) {
+    JTQueue *queue = jtq_create(1);
+    CuAssertIntEquals(tc, jtq_size(queue), 0);
+    jtq_dispose(queue);
+}
+
+//Test the isfull function.
+void TestJTQIsNotFull(CuTest *tc) {
+    JTQueue *queue = jtq_create(1);
+    CuAssertTrue(tc, !jtq_isfull(queue));
+    jtq_dispose(queue);
+}
+
 //Test enqueuing and dequeueing one element.
 void TestJTQEnqDeqOne(CuTest *tc) {
     JTQueue *queue = jtq_create(1);
@@ -140,6 +161,9 @@ void TestJTQEnqFull(CuTest *tc) {
 CuSuite *CuGetSuite(void) {
     CuSuite *suite = CuSuiteNew();
 
+    SUITE_ADD_TEST(suite, TestJTQCreateDispose);
+    SUITE_ADD_TEST(suite, TestJTQSizeZero);
+    SUITE_ADD_TEST(suite, TestJTQIsNotFull);
     SUITE_ADD_TEST(suite, TestJTQEnqDeqOne);
     SUITE_ADD_TEST(suite, TestJTQEnqDeqMany);
     SUITE_ADD_TEST(suite, TestJTQEnqMany);
